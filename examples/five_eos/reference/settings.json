@@ -1,0 +1,47 @@
+{
+  "cooling": {
+    "initial_temperature_8": 100.0,
+    "final_years": null,
+    "minimum_temperature_K": 0.0,
+    "minimum_luminosity_erg_s": 1e+31,
+    "late_growth_start_years": 100000.0,
+    "late_growth_factor": 1.05,
+    "dt_initial_years": 0.01,
+    "dt_min_years": 1e-12,
+    "dt_max_years": 1000.0,
+    "n_fixed_steps": 20,
+    "max_change": 0.0125,
+    "grow_below_change": 0.0025,
+    "target_change": 0.00625,
+    "min_step_factor": 0.2,
+    "max_shrink_factor": 0.5,
+    "max_growth_factor": 2.0,
+    "luminosity_start_years": 0.01,
+    "theta": 0.5,
+    "predictor_corrector": true,
+    "fixed_steps_backward_euler": true
+  },
+  "input": {
+    "structure": "none",
+    "Tinit8": 100.0,
+    "crust_n": {
+      "enabled": true,
+      "model": 7
+    },
+    "core_n": {
+      "enabled": true,
+      "model": 12
+    },
+    "core_p": {
+      "enabled": true,
+      "model": 8
+    },
+    "envelope_model": "gudmundsson",
+    "eos": "BSk24",
+    "mass": [
+      1.4
+    ],
+    "mesh": "A"
+  },
+  "mesh": "C"
+}

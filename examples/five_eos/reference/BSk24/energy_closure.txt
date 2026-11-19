@@ -1,0 +1,10 @@
+Energy balance dE/dt = -(L_nu + L_gamma), windows from t >= 1 yr
+  window [yr]            energy lost [erg]   closure error
+          1 -        10          3.952e+47       +0.003%
+         10 -       100          2.139e+47       +0.005%
+        100 -  1.01e+03          1.034e+47       +0.011%
+   1.01e+03 -  1.02e+04          5.816e+46       +0.012%
+   1.02e+04 -     1e+05          6.292e+46       +0.106%
+      1e+05 -     1e+06          5.171e+45       +0.021%
+      1e+06 -  1.07e+06          2.442e+43       +0.010%
+  largest closure error 0.106%  (tolerance 1%): OK

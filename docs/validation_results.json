@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-19",
+  "pytest": {
+    "passed": 51,
+    "slow_deselected": 1,
+    "warnings": 12
+  },
+  "five_eos_tracks_match_rtol_1e_10": {
+    "BSk22": true,
+    "BSk24": true,
+    "BSk25": true,
+    "BSk26": true,
+    "APR": true
+  },
+  "neutrino_profiles_reintegrate_rtol": 1e-12,
+  "core_modules_unchanged": true,
+  "default_short_run_completed": true,
+  "reference_plot_commands_completed": true
+}

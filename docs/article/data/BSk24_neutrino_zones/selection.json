@@ -1,0 +1,109 @@
+{
+  "eos": "BSk24",
+  "mass_solar": 1.3999999775509935,
+  "radius_km": 12.574355267324934,
+  "segments": [
+    {
+      "process": "modified_urca",
+      "start_yr": 1.0,
+      "end_yr": 231.28573338621666,
+      "log_width": 2.3641488446048964
+    },
+    {
+      "process": "brems_nn",
+      "start_yr": 231.28573338621666,
+      "end_yr": 31978.343549064415,
+      "log_width": 2.140707119303994
+    },
+    {
+      "process": "pbf_core",
+      "start_yr": 31978.343549064415,
+      "end_yr": 1071832.5049525988,
+      "log_width": 1.5252709596398017
+    }
+  ],
+  "snapshots": [
+    {
+      "label": "A",
+      "step": 377,
+      "time_yr": 15.258000000000013,
+      "dominant": "modified_urca",
+      "Lnu_total": 2.384048220110553e+38,
+      "fractions": {
+        "modified_urca": 0.49362330054564063,
+        "brems_nn": 0.1863079822005668,
+        "brems_np": 0.0015397860621403803,
+        "brems_pp": 7.397633842229898e-05,
+        "brems_ep": 0.004203099357554236,
+        "pbf_core": 0.2907595164748318,
+        "direct_urca": 0.0,
+        "brems_e_ions": 0.012566279467016337,
+        "plasma": 0.0019489727969777913,
+        "pbf_crust": 0.00897708675684974,
+        "pair": 7.038381123304922e-35
+      },
+      "interval": {
+        "process": "modified_urca",
+        "start_yr": 1.0,
+        "end_yr": 231.28573338621666,
+        "log_width": 2.3641488446048964
+      },
+      "Lgamma_inf": 7.608566583112986e+34
+    },
+    {
+      "label": "B",
+      "step": 663,
+      "time_yr": 2750.3620000000024,
+      "dominant": "brems_nn",
+      "Lnu_total": 2.7994030539906945e+35,
+      "fractions": {
+        "modified_urca": 0.188550287424629,
+        "brems_nn": 0.6097501624788749,
+        "brems_np": 0.00022956273497321713,
+        "brems_pp": 1.1494775610929998e-06,
+        "brems_ep": 0.01433691532344951,
+        "pbf_core": 0.1487953564179036,
+        "direct_urca": 0.0,
+        "brems_e_ions": 0.03597508837648622,
+        "plasma": 2.9962313417705287e-05,
+        "pbf_crust": 0.002331515452704658,
+        "pair": 3.1131145037837015e-68
+      },
+      "interval": {
+        "process": "brems_nn",
+        "start_yr": 231.28573338621666,
+        "end_yr": 31978.343549064415,
+        "log_width": 2.140707119303994
+      },
+      "Lgamma_inf": 1.4442467751066222e+34
+    },
+    {
+      "label": "C",
+      "step": 1021,
+      "time_yr": 185843.9935755106,
+      "dominant": "pbf_core",
+      "Lnu_total": 1.5412754870691175e+32,
+      "fractions": {
+        "modified_urca": 1.0175660840307012e-12,
+        "brems_nn": 0.0007568151801211574,
+        "brems_np": 5.968059406469573e-19,
+        "brems_pp": 6.988609254986823e-32,
+        "brems_ep": 1.8657578166203154e-05,
+        "pbf_core": 0.999059103197472,
+        "direct_urca": 0.0,
+        "brems_e_ions": 0.00016411630979153426,
+        "plasma": 2.5491538854722153e-29,
+        "pbf_crust": 1.307733431555166e-06,
+        "pair": 0.0
+      },
+      "interval": {
+        "process": "pbf_core",
+        "start_yr": 31978.343549064415,
+        "end_yr": 1071832.5049525988,
+        "log_width": 1.5252709596398017
+      },
+      "Lgamma_inf": 3.322416822492577e+32
+    }
+  ],
+  "core_boundary_rho": 134939539150210.69
+}

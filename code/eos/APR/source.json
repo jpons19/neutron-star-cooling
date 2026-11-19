@@ -1,0 +1,17 @@
+{
+  "source": "https://compose.obspm.fr/eos/327",
+  "download": "https://compose.obspm.fr/download/1D/NS/CUTER/DDFGOS_APR/eos.zip",
+  "retrieved": "2026-11-19",
+  "sha256": {
+    "README": "01815eea14db5656e772e8a925753b89aee3f90db396784d1889e2e51cfbcf8d",
+    "eos.compo": "49f74f5532511dabb42c96b2e702773d06382efaa5af47230189da03c033dbd9",
+    "eos.init": "03f4279492f5620dca667655ddea5c3ff54bf3a0bacdca79a1174f3a6e656da3",
+    "eos.micro": "0421d723ae5f867c21f2752b2cc1ddd18d299ddfbb358e0365f565efa953e9cf",
+    "eos.mr": "3142634938efd85aa4b085c9845ed2ffb62cfc09ac4ce697ec3c99dee8203215",
+    "eos.nb": "f7a00d75d83df97c594c6b46959a440c472a88dc6ebe3ab98b9333aedd4687ba",
+    "eos.pdf": "2869883ba8ff8aeb6cf0cf297133bf70027b38a9b6020d4eddc7155fdc3fd73f",
+    "eos.t": "ebb883245934dd65844bf40bc1adca11cb1547ee0e1568807b826c59a5a75685",
+    "eos.thermo": "f944ee1db0d7534b74180dca458dbc70180194bd87f4482047d4d6daf7c5c601",
+    "eos.yq": "680a7916edf63093aa607fa06c247eb7f05e5948fe5a6435ca308ea6ff2a56ff"
+  }
+}

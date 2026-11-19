@@ -1,0 +1,17 @@
+{
+  "source": "https://compose.obspm.fr/eos/257",
+  "download": "https://compose.obspm.fr/download/1D/NS/Skyrme/BSK25/eos.zip",
+  "retrieved": "2026-11-19",
+  "sha256": {
+    "README": "6b63e224d372e714acb601c72719ece7bf61e2184c199be8524d4c53bac453b9",
+    "eos.compo": "3fbd301a0107fce42f23ccd77165a89ab2010cf9a2f166d23480a28b5925bba0",
+    "eos.init": "c7abb9ae122f8c433ca314036e555196b55cfe93ccf18356bfad6ae2fd98c889",
+    "eos.micro": "a8c37ae50d6066b8f2e7c0d3befcdac964a3ab281a1dcf39ae1c6e6f833d43a3",
+    "eos.mr": "692b76d5d5b9eb339fc4786197de476a3b08a6daf1b960251831690f599af95c",
+    "eos.nb": "d380734a1d57a278c8fe3ffbe06c25f295a62957c276d6d248b194e09f748453",
+    "eos.pdf": "98f6979a46dd1cc937f164773f58a0dfc57795c653362ed0d0c70f29b7535e07",
+    "eos.t": "5fa22f861097c3aa7becf2480adfe981726144c8e4029df34751e2802e7e3835",
+    "eos.thermo": "388508926df86f1233323f085209775942b1677deb6fea2275a91d5e47d9ef6e",
+    "eos.yq": "6d94b4b46e6a9ce1c02b581166cda0e13681bbdc31d7ab340bba5cec53075554"
+  }
+}

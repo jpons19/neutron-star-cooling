@@ -1,0 +1,10 @@
+*.py text eol=lf
+*.md text eol=lf
+*.tex text eol=lf
+*.bib text eol=lf
+*.csv text eol=lf
+*.json text eol=lf
+*.png binary
+*.pdf binary
+# Preserve original provider bytes, including line endings and hash manifests.
+code/eos/** -text
