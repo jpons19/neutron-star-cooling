@@ -1,0 +1,18 @@
+Structure file (not used)
+none
+Initial temperature T_8
+1.d2
+Unused
+800
+Superfluidity
+a) crust n
+1 7
+b) core n
+1 27
+c) core p
+0 8
+envelope_model = fe
+
+eos = BSk24
+mass = 1.4
+mesh = C
