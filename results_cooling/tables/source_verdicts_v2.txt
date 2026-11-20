@@ -1,0 +1,19 @@
+               source               age           vs minimal Fe vs minimal Fe+accreted
+CXOU J085201.4-461753   1.6e+03-5.1e+03    BELOW by >= 0.17 dex   BELOW by >= 0.17 dex
+CXOU J232327.8+584842           320-339                  inside                 inside
+       PSR J0205+6449         800-7e+03    BELOW by >= 0.18 dex   BELOW by >= 0.18 dex
+       PSR J0357+3205     2e+05-1.3e+06                  inside                 inside
+       PSR J0538+2817       2e+04-6e+04                  inside                 inside
+CXOU J061705.3+222127       3e+03-2e+04                  inside                 inside
+         PSR B0656+14     7e+04-1.2e+05                  inside                 inside
+         PSR B0833-45     1.1e+04-4e+04                  inside                 inside
+         PSR B1951+32   4.5e+04-8.5e+04 UL               inside                 inside
+         PSR B2334+61 6.93e+03-4.11e+04                  inside                 inside
+      RX J0720.4-3125       7e+05-1e+06                  inside                 inside
+      RX J1308.6+2127       3e+05-8e+05                  inside                 inside
+      RX J1605.3+3249   3.8e+05-5.1e+05                  inside                 inside
+      RX J1856.5-3754     3.4e+05-5e+05                  inside                 inside
+       PSR J0007+7303     9e+03-1.3e+04 UL BELOW by >= 1.08 dex   BELOW by >= 1.08 dex
+         PSR B0531+21           954-954 UL               inside                 inside
+         PSR B1727-47       4e+04-8e+04 UL BELOW by >= 0.30 dex                 inside
+         PSR B0950+08     6e+05-7.6e+06                  inside                 inside

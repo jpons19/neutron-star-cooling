@@ -53,7 +53,7 @@ code {{ font-size:.88em; }}
 <main>
 
 <h1>Neutron-star cooling: how much do pairing gaps, envelope and mass move the curves?</h1>
-<p class="meta">Working report, 19–20 November 2026. 117 runs of the <code>neutron-star-cooling</code> solver: a 67-run sweep over gaps, envelope and mass (sections 1–5), and a 50-run mass sweep with the default microphysics (section 6). Compared with the <code>ns-thermal-catalogue</code> review values of 19 November 2026.</p>
+<p class="meta">Working report, 19–20 November 2026. 164 runs of the <code>neutron-star-cooling</code> solver: a 67-run sweep over gaps, envelope and mass (sections 1–5), a 50-run mass sweep with the default microphysics (section 6), and 47 follow-up runs that fill the remaining gaps (section 7). Compared with the <code>ns-thermal-catalogue</code> review values of 19 November 2026.</p>
 
 <p class="lede">The five reference cooling curves used in the catalogue differed from each other by up to a factor of ten at 1–30 kyr. This sweep shows that the difference comes mainly from the pairing gaps and the envelope, not from the equation of state. It also gives a minimal-cooling band against which the observed sources can be tested.</p>
 
@@ -63,6 +63,8 @@ code {{ font-size:.88em; }}
 <p>The lower edge of the minimal-cooling band is robust. It is the same within 0.06 dex across 11 published triplet gap models.</p>
 <p>With the default gaps, mass changes the curves mainly by shifting when the triplet pair-breaking drop happens. That is why the original five reference curves at 1.4 M<sub>☉</sub> looked so different from each other.</p>
 <p>Against that band, <span class="cold">PSR J0007+7303</span> is the only source that is clearly too cold: at least 1.1 dex below. Vela Jr and J0205+6449 are marginally below (about 0.2 dex). B1727−47 is below only if its envelope is iron.</p>
+<p>Direct Urca reaches J0007 only where the region in which it operates is not covered by pairing. A heavy mass alone is not enough: with the cold-reference gaps, BSk24 stays above the J0007 limit at every mass up to 1.95 M<sub>☉</sub>.</p>
+<p>The follow-up runs confirm both band edges to within about 0.1 dex. The references are numerically converged. Passive cooling can reach every independent-age source older than 10<sup>5</sup> yr, including B0950+08.</p>
 </div>
 
 <h2>1. What was run</h2>
@@ -111,22 +113,22 @@ code {{ font-size:.88em; }}
 <h2>5. The bands compared with the sources</h2>
 <figure>
 {img("fig4_bands_vs_sources.png","Minimal-cooling and full bands with the hot and cold reference curves, and the independent-age sources from the catalogue")}
-<figcaption><b>Figure 4.</b> Dark blue: minimal-cooling band with Fe envelopes. Light blue: the same band including accreted envelopes. Grey: all 67 runs including direct Urca. Red lines: hot reference (solid Fe, dashed accreted). Blue lines: cold reference (solid Fe, dashed accreted). Points: the 18 independent-age sources with the catalogue’s current adopted or provisional values. The hatched region below 10<sup>30</sup> erg/s was not computed.</figcaption>
+<figcaption><b>Figure 4.</b> Dark blue: minimal-cooling band with Fe envelopes. Light blue: the same band including accreted envelopes. Grey: all runs including direct Urca. The bands are rebuilt from all 164 runs (section 7.6). Red lines: hot reference (solid Fe, dashed accreted). Blue lines: cold reference (solid Fe, dashed accreted). Points: the 18 independent-age sources with the catalogue’s current adopted or provisional values. The hatched region below 10<sup>30</sup> erg/s was not computed.</figcaption>
 </figure>
 <p>A source counts as below the band only if its whole error box lies below the band at every age in its range. Upper limits are treated as boxes extending to zero luminosity.</p>
 <div class="scroll"><table>
 <thead><tr><th>Source</th><th>Age range (yr)</th><th>Against minimal cooling, Fe</th><th>Against minimal cooling, Fe + accreted</th></tr></thead>
 <tbody>
 <tr class="below"><td>PSR J0007+7303 (upper limit)</td><td>9–13 × 10<sup>3</sup></td><td>below by ≥ 1.08 dex</td><td>below by ≥ 1.08 dex</td></tr>
-<tr class="below"><td>PSR B1727−47 (upper limit)</td><td>40–80 × 10<sup>3</sup></td><td>below by ≥ 0.31 dex</td><td>inside</td></tr>
-<tr class="below"><td>Vela Jr (CXOU J085201.4−461753)</td><td>1.6–5.1 × 10<sup>3</sup></td><td>below by ≥ 0.19 dex</td><td>below by ≥ 0.19 dex</td></tr>
+<tr class="below"><td>PSR B1727−47 (upper limit)</td><td>40–80 × 10<sup>3</sup></td><td>below by ≥ 0.30 dex</td><td>inside</td></tr>
+<tr class="below"><td>Vela Jr (CXOU J085201.4−461753)</td><td>1.6–5.1 × 10<sup>3</sup></td><td>below by ≥ 0.17 dex</td><td>below by ≥ 0.17 dex</td></tr>
 <tr class="below"><td>PSR J0205+6449 (3C 58)</td><td>0.8–7 × 10<sup>3</sup></td><td>below by ≥ 0.18 dex</td><td>below by ≥ 0.18 dex</td></tr>
 <tr><td>PSR B2334+61 (current box)</td><td>6.9–41 × 10<sup>3</sup></td><td>inside</td><td>inside</td></tr>
 <tr><td>Cas A, Crab (upper limit), IC 443, Vela, S147, Monogem, B1951+32 (upper limit), J0357, five XINS</td><td>—</td><td>inside</td><td>inside</td></tr>
 <tr><td>PSR B0950+08</td><td>0.6–7.6 × 10<sup>6</sup></td><td colspan="2">not assessable: below the 10<sup>30</sup> erg/s stop</td></tr>
 </tbody></table></div>
 <p><b>J0007+7303 is the robust case.</b> Even if its luminosity ceiling were 2–3 times higher, which is plausible given the spectral model, it would still lie at least about 0.6 dex below the band. That requires enhanced cooling, for example direct Urca in a heavier star.</p>
-<p><b>Vela Jr and J0205+6449 are marginal.</b> They are about 0.2 dex below, which is within their distance and emitting-component systematics. For J0205 the lower part of the box comes from a small-area hot-spot fit, which is not a measurement of cooling luminosity.</p>
+<p><b>Vela Jr and J0205+6449 are marginal.</b> They are about 0.17–0.18 dex below, which is within their distance and emitting-component systematics. For J0205 the lower part of the box comes from a small-area hot-spot fit, which is not a measurement of cooling luminosity.</p>
 <p><b>B1727−47 depends on the envelope.</b> With an accreted envelope, the strongly paired cold edge drops fast enough after 3 × 10<sup>4</sup> yr to reach its upper limit.</p>
 <p><b>B2334+61 depends on the distance branch.</b> It is inside the band with the current hybrid box, which pairs the near-distance age with the far-distance luminosity. On the self-consistent near-distance branch (about 7.7 kyr) it would be 0.8–1.3 dex below: 0.8 dex with the whole-surface atmosphere fit that is valid near 1 kpc, more with the hot-spot interpretation. On the far branch its age is unknown but probably older, and it would be inside. This is the first source to discuss next.</p>
 <p>No source is above the band. Cas A is inside it, but at ages where several triplet gap models produce their pair-breaking drop (Figure 3), so it is the source most sensitive to that choice. S147, the most luminous source near 30 kyr, sits well inside the band, about 0.8 dex below the Fe hot edge.</p>
@@ -156,29 +158,99 @@ code {{ font-size:.88em; }}
 <li><b>The B2334+61 near-distance branch</b> ((1.2–8.2) × 10<sup>31</sup> erg/s at about 8 kyr) can be matched by direct Urca in BSk22, BSk24 or BSk25.</li>
 </ul>
 
-<h2>7. Reference models</h2>
+<h2>7. Follow-up runs: filling the remaining gaps</h2>
+<p>After sections 1–6, five things were still open: the cold edge had been tested at only two central densities; the hot edge rested on a single proton gap; the direct Urca regime was coarsely sampled; no curve went below 10<sup>30</sup> erg/s; and the references had not been checked numerically. These 47 runs address each of those. All completed. The largest energy-closure error was 0.62% (median 0.02%), and the total solver time was 33 minutes.</p>
+<div class="scroll"><table>
+<thead><tr><th>Block</th><th>Runs</th><th>Question</th><th>Configuration</th></tr></thead>
+<tbody>
+<tr><td>F</td><td class="num">12</td><td>Is the minimal-cooling floor lower at other central densities?</td><td>Triplet gaps AO, TToa, T and HGA12-deep, with the strong proton gap and an Fe envelope, in BSk24 at 1.2 and 1.5 M<sub>☉</sub> and BSk26 at 1.6 M<sub>☉</sub></td></tr>
+<tr><td>G</td><td class="num">12</td><td>Which proton gap gives the hottest star?</td><td>Proton gaps CCDK, BCLL, CCYms, EEHO, EEHOr and T, with no triplet gap and an Fe envelope, in BSk24 at 1.2 M<sub>☉</sub> and BSk26 at 2.1 M<sub>☉</sub></td></tr>
+<tr><td>H</td><td class="num">11</td><td>What does direct Urca need to reach the cold sources?</td><td>BSk24 at 1.62, 1.66, 1.75 and 1.95 M<sub>☉</sub>, without gaps and with the cold-reference gaps; BSk22 without gaps at 1.2, 1.3 and 1.5 M<sub>☉</sub></td></tr>
+<tr><td>I</td><td class="num">4</td><td>Do the results survive a light-element envelope?</td><td>Accreted versions of the cold reference, the hot setting in a light star, and the two BSk24 1.75 M<sub>☉</sub> runs from block H</td></tr>
+<tr><td>J</td><td class="num">4</td><td>Can passive cooling reach the old sources?</td><td>Hot and cold references, Fe and accreted, followed down to 10<sup>27</sup> erg/s</td></tr>
+<tr><td>K</td><td class="num">4</td><td>Are the references numerically converged?</td><td>Both references on mesh D (half the step size of C), and with an initial temperature of 10<sup>9</sup> K instead of 10<sup>10</sup> K</td></tr>
+</tbody></table></div>
+
+<h3>7.1 The cold edge holds at other central densities</h3>
+<figure>
+{img("fig6_edges_checks.png","Left: four triplet gap models in three more stars compared with the cold reference. Right: six proton gap models without a triplet gap in a light and a heavy star")}
+<figcaption><b>Figure 6.</b> (a) Block F: four triplet gaps (colour) in three more stars (line style), with the cold reference in black. (b) Block G: six proton gaps without a triplet gap, in a light (solid) and a heavy (dashed) star. The reference proton gap HGA12 ≈ CCDK is in black. Fe envelope throughout.</figcaption>
+</figure>
+<p>From 3 to 30 kyr, no run in panel (a) falls more than 0.02 dex below the cold reference. The largest deviations are about 0.1 dex. Below 1 kyr, the AO gap in the light BSk24 star is lower (log L 33.08 against 33.17 at 10<sup>3</sup> yr). At 10<sup>5</sup> yr, TToa in BSk26 at 1.6 M<sub>☉</sub> is 0.07 dex lower. These shifts are too small to change any verdict.</p>
+<p>The HGA12-deep gap (purple) shows the central-density effect of section 6 clearly. In the light BSk24 star its gap is never reached and the star stays near the hot edge. At 1.5 M<sub>☉</sub> the drop comes at about 10<sup>4</sup> yr, and in BSk26 at 1.6 M<sub>☉</sub> it comes before 300 yr.</p>
+
+<h3>7.2 The hot edge holds across proton gaps</h3>
+<p>CCDK reproduces the reference gap (model 8) to plotting precision, as expected from their near-identical parameters. All five other proton gaps are colder. In the light star the difference at 10<sup>4</sup> yr is 0.08 dex (EEHO) to 0.37 dex (BCLL), because they cover less of the core. In the heavy star the difference is at most 0.03 dex: its dense centre lies beyond the reach of every proton gap, so modified Urca there is unsuppressed whatever the choice. The hot edge is therefore set by the broadest strong proton gap, which is the one already used.</p>
+
+<h3>7.3 What direct Urca needs to explain the cold sources</h3>
+<figure>
+{img("fig7_durca_map.png","Luminosity at ten thousand years against mass for several direct Urca configurations, with the J0007 limit and the B2334 near-branch range overlaid")}
+<figcaption><b>Figure 7.</b> L<sub>γ</sub><sup>∞</sup> at 10<sup>4</sup> yr against mass. Solid lines: no pairing gaps. Dashed lines: the cold-reference gaps (strong proton gap plus AO triplet gap). Dotted lines: the default gaps of the mass sweep. Open markers: accreted envelope. Blue band: below the J0007+7303 limit of 3 × 10<sup>31</sup> erg/s; the dotted line marks the about 10<sup>32</sup> erg/s ceiling of the blackbody alternative. Magenta band: the B2334+61 near-branch range. Vertical lines: direct Urca thresholds.</figcaption>
+</figure>
+<p><b>Without gaps, direct Urca overshoots.</b> BSk24 just above its threshold (1.62 M<sub>☉</sub>) gives log L 30.95 at 10<sup>4</sup> yr, about 0.5 dex below the J0007 limit (31.48). Heavier stars go lower still. BSk22 without gaps gives 30.55 already at 1.2 M<sub>☉</sub>.</p>
+<p><b>With the cold-reference gaps, direct Urca falls short.</b> The AO triplet gap covers the whole region where direct Urca operates. BSk24 then only falls from 31.94 at 1.62 M<sub>☉</sub> to 31.65 at 1.95 M<sub>☉</sub>, never reaching the J0007 limit.</p>
+<p><b>The default gaps reach J0007 only in BSk22.</b> BSk22 at 1.5 M<sub>☉</sub> or more levels off at log L ≈ 31.40, just below the limit. Its direct Urca region begins at low density (0.33 fm<sup>−3</sup>), where the deep default triplet gap is absent. In BSk24 and BSk25 the default gaps level off at about 31.95, above the limit.</p>
+<p>So J0007 needs direct Urca in a region that pairing leaves largely uncovered. That can mean weak gaps, or an EOS whose direct Urca region lies outside the triplet gap. A heavy mass alone is not enough.</p>
+<p>This conclusion depends on the catalogue’s luminosity ceiling. If the blackbody-based ceiling of about 10<sup>32</sup> erg/s were adopted instead (see the J0007 entry in the catalogue review), the cold-reference gaps in BSk24 above about 1.6 M<sub>☉</sub> would also be compatible. The spectral question for J0007 therefore decides how strong a constraint it places on pairing.</p>
+<p>The <b>B2334+61 near branch</b> ((1.2–8.2) × 10<sup>31</sup> erg/s) is much easier to reach. BSk24 with the cold-reference gaps does so from about 1.66 M<sub>☉</sub>, and BSk22 with the default gaps from about 1.45 M<sub>☉</sub>.</p>
+<p><b>Accreted envelope:</b> it raises the direct Urca stars by 0.5–0.6 dex at 10<sup>4</sup> yr. BSk24 at 1.75 M<sub>☉</sub> without gaps still lies below the J0007 limit (31.04). With the cold-reference gaps it rises to 32.25, well above the limit.</p>
+
+<h3>7.4 Late times</h3>
+<figure>
+{img("fig8_late_times.png","The hot and cold references followed to ten to the 27 erg per second, with all sources older than ten to the five years")}
+<figcaption><b>Figure 8.</b> The two references followed down to 10<sup>27</sup> erg/s with Fe (solid) and accreted (dashed) envelopes. Filled points: sources with independent ages, with their ranges. Open diamonds: sources with only a characteristic age. Open purple squares: small-hot-spot pulsars with only a characteristic age.</figcaption>
+</figure>
+<p>The four references reach 10<sup>29</sup> erg/s at very different ages:</p>
+<ul>
+<li>hot reference, Fe: 3.7 Myr (10<sup>28</sup> erg/s at 4.3 Myr);</li>
+<li>hot reference, accreted: 0.97 Myr;</li>
+<li>cold reference, Fe: 0.42 Myr;</li>
+<li>cold reference, accreted: 0.12 Myr.</li>
+</ul>
+<p><b>Every independent-age source older than 10<sup>5</sup> yr lies between the references.</b> That includes B0950+08 (8 × 10<sup>28</sup> erg/s, 0.6–7.6 Myr), which passive cooling can therefore accommodate. This comparison alone does not require internal heating.</p>
+<p><b>Two XINS with only characteristic ages lie above every passive curve:</b> RX J2143.0+0654 (9 × 10<sup>31</sup> erg/s at τ<sub>c</sub> = 3.7 Myr) and RX J0806.4−4123 (2 × 10<sup>31</sup> erg/s at 17 Myr). For the three XINS with independent ages, τ<sub>c</sub> exceeds the true age by 2–9 times. At a fifth of their characteristic ages, both would lie inside the band, so their position here says more about τ<sub>c</sub> than about cooling.</p>
+<p><b>The small-hot-spot pulsars older than about 4 Myr also lie above the hot reference.</b> That is expected, since their emission is polar-cap heating rather than surface cooling.</p>
+<p>Below 10<sup>30</sup> erg/s only the four references were followed, so the lower edge of the band is not defined there.</p>
+
+<h3>7.5 Numerical checks</h3>
+<ul>
+<li><b>Mesh:</b> on mesh D, both references change by at most 0.005 dex anywhere between 300 yr and 0.3 Myr.</li>
+<li><b>Initial temperature:</b> starting at 10<sup>9</sup> K instead of 10<sup>10</sup> K changes the curves by 0.02–0.03 dex at 30 yr and by less than 0.002 dex from 100 yr onwards.</li>
+</ul>
+<p>The results are converged and independent of the initial condition at every age where sources exist.</p>
+
+<h3>7.6 Updated bands and verdicts</h3>
+<p>The bands in Figure 4 are rebuilt from all 164 runs, except the numerical checks. The mass-sweep runs, with the Gudmundsson envelope, count as iron-like.</p>
+<ul>
+<li>The Fe lower edge moves by at most 0.07 dex up to 10<sup>5</sup> yr: 0.02 dex lower at 10<sup>3</sup> yr and 0.07 dex lower at 10<sup>5</sup> yr.</li>
+<li>The Fe upper edge rises by at most 0.04 dex, from BSk25 at 1.38 M<sub>☉</sub> with the default gaps.</li>
+<li>The source verdicts are unchanged, except that Vela Jr moves from 0.19 to 0.17 dex below the band. The updated comparison is in <code>tables/source_verdicts_v2.txt</code>.</li>
+</ul>
+
+<h2>8. Reference models</h2>
 <div class="scroll"><table>
 <thead><tr><th>Reference</th><th>Definition</th><th>How closely it follows the band edge</th></tr></thead>
 <tbody>
 <tr><td class="cold">Cold (minimal cooling)</td><td>Strong proton gap (HGA12≈CCDK) + AO triplet gap; BSk26, 2.1 M<sub>☉</sub>; Fe envelope. For the light-element case, the accreted version is colder after about 2 × 10<sup>4</sup> yr.</td><td>Within 0.18 dex of the Fe lower edge at all ages (rms 0.06 dex); stable across 11 triplet models</td></tr>
 <tr><td class="hot">Hot (minimal cooling)</td><td>Strong proton gap, no triplet gap; BSk26, 1.7 M<sub>☉</sub>. Accreted envelope up to about 1.5 × 10<sup>5</sup> yr, Fe afterwards.</td><td>Within 0.49 dex as a single Fe run (rms 0.38). Only the composite follows the hot edge at all ages.</td></tr>
 </tbody></table></div>
+<p>The follow-up runs (section 7) confirm both references: the cold edge holds across four more triplet gaps at three more central densities, and the hot edge across six proton gaps. Both are numerically converged.</p>
 <p>The two references differ essentially in one choice: whether the core neutrons pair into a triplet state with a gap large enough to trigger pair-breaking emission at the relevant ages. Neither was tuned to the observed sources.</p>
 
-<h2>8. Limitations</h2>
+<h2>9. Limitations</h2>
 <ul>
-<li>Only three proton gap options were sampled. The triplet gap was tested broadly (11 models), but at one mass and with one proton gap.</li>
+<li>In total, 7 of the solver’s 12 proton gaps and 11 of its triplet gaps were sampled. Not every combination of gap, mass and EOS was run.</li>
 <li>The magnetic field is zero. Only fully iron and fully accreted envelopes were run, with no partially accreted cases.</li>
-<li>The solver’s documented approximations remain: the pair-breaking response, the APR crust composition, and the BSk25 and BSk26 table rows omitted by the reader. Spatial convergence was not re-tested; only mesh C was used.</li>
+<li>The solver’s documented approximations remain: the pair-breaking response, the APR crust composition, and the BSk25 and BSk26 table rows omitted by the reader. Mesh convergence was checked only for the two references (section 7.5).</li>
 <li>The mass sweep uses one set of gaps and one envelope. Its quantitative statements, such as the levels after direct Urca switches on, hold for the default microphysics only.</li>
-<li>Comparisons below 10<sup>30</sup> erg/s, after about 1 Myr, are not possible with these runs.</li>
+<li>Below 10<sup>30</sup> erg/s, only the four reference runs of block J extend; the band itself is not defined there.</li>
 <li>The source boxes are the catalogue’s current working values. Their own open issues (hot-spot versus whole-surface components, distance branches) are discussed in the catalogue audit and affect the verdicts above.</li>
 </ul>
 
 <h2>Contents of this folder</h2>
 <ul>
 <li><code>report.html</code>: this report, with the figures embedded.</li>
-<li><code>figures/</code>: the five figures as separate PNG files.</li>
+<li><code>figures/</code>: the eight figures as separate PNG files.</li>
 <li><code>tables/run_table.csv</code>: one row per run, giving its settings, direct-Urca flag, log L at eight ages and final age.</li>
 <li><code>tables/cooling_sweep_curves.csv</code>: all 67 cooling curves, in the same format as <code>cooling_five_eos.csv</code> in the catalogue.</li>
 <li><code>tables/bands.csv</code>: the upper and lower edges of the three bands on a common age grid.</li>
@@ -186,7 +258,9 @@ code {{ font-size:.88em; }}
 <li><code>tables/source_verdicts.txt</code>: the source comparison.</li>
 <li><code>tables/plan.csv</code>: the run plan.</li>
 <li><code>tables/mass_sweep_table.csv</code>, <code>tables/mass_sweep_curves.csv</code>, <code>tables/mass_sweep_qc.csv</code>: the 50-run mass sweep, giving log L at eight ages per run, the full curves, and runtime and energy closure.</li>
-<li><code>runs_inputs/gap_sweep/</code> (67 files) and <code>runs_inputs/mass_sweep/</code> (50 files): the solver input files.</li>
+<li><code>tables/followup_run_table.csv</code>, <code>tables/followup_curves.csv</code>, <code>tables/followup_qc.csv</code>: the 47 follow-up runs of blocks F–K.</li>
+<li><code>tables/bands_v2.csv</code>: the bands rebuilt from all runs, with the run that defines each edge at each age. <code>tables/bands.csv</code> is the earlier version from the first sweep. <code>tables/source_verdicts_v2.txt</code> is the updated source comparison.</li>
+<li><code>runs_inputs/gap_sweep/</code> (67 files), <code>runs_inputs/mass_sweep/</code> (50 files) and <code>runs_inputs/followup_sweep/</code> (47 files): the solver input files.</li>
 <li><code>scripts/</code>: plan, runner, analysis and plotting scripts for both sweeps (the mass sweep uses <code>run_mass.py</code> and <code>plot_mass.py</code>). These expect the solver repository next to the sweep folder.</li>
 </ul>
 </main>
