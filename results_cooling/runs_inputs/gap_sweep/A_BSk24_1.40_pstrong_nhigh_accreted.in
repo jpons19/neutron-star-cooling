@@ -1,0 +1,18 @@
+Structure file (not used)
+none
+Initial temperature T_8
+1.d2
+Unused
+800
+Superfluidity
+a) crust n
+1 7
+b) core n
+1 26
+c) core p
+1 8
+envelope_model = accreted
+
+eos = BSk24
+mass = 1.4
+mesh = C

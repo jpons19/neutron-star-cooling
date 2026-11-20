@@ -53,14 +53,15 @@ code {{ font-size:.88em; }}
 <main>
 
 <h1>Neutron-star cooling: how much do pairing gaps, envelope and mass move the curves?</h1>
-<p class="meta">Working report, 19 November 2026. 67 runs of the <code>neutron-star-cooling</code> solver, compared with the <code>ns-thermal-catalogue</code> review values of the same date.</p>
+<p class="meta">Working report, 19–20 November 2026. 117 runs of the <code>neutron-star-cooling</code> solver: a 67-run sweep over gaps, envelope and mass (sections 1–5), and a 50-run mass sweep with the default microphysics (section 6). Compared with the <code>ns-thermal-catalogue</code> review values of 19 November 2026.</p>
 
 <p class="lede">The five reference cooling curves used in the catalogue differed from each other by up to a factor of ten at 1–30 kyr. This sweep shows that the difference comes mainly from the pairing gaps and the envelope, not from the equation of state. It also gives a minimal-cooling band against which the observed sources can be tested.</p>
 
 <div class="verdict">
 <p><b>Main results</b></p>
-<p>Without direct Urca, the core neutron-triplet gap is the dominant choice, followed by the core proton gap and the envelope composition. EOS and mass shift the curves by at most about 0.5 dex.</p>
+<p>Without direct Urca, the core neutron-triplet gap is the dominant choice, followed by the core proton gap and the envelope composition. For a given gap setting with no triplet gap, EOS and mass shift the curves by at most about 0.5 dex. When a triplet gap is present, mass also moves the time of the pair-breaking drop, and that can change L at a given age by about 1 dex (section 6).</p>
 <p>The lower edge of the minimal-cooling band is robust. It is the same within 0.06 dex across 11 published triplet gap models.</p>
+<p>With the default gaps, mass changes the curves mainly by shifting when the triplet pair-breaking drop happens. That is why the original five reference curves at 1.4 M<sub>☉</sub> looked so different from each other.</p>
 <p>Against that band, <span class="cold">PSR J0007+7303</span> is the only source that is clearly too cold: at least 1.1 dex below. Vela Jr and J0205+6449 are marginally below (about 0.2 dex). B1727−47 is below only if its envelope is iron.</p>
 </div>
 
@@ -130,7 +131,32 @@ code {{ font-size:.88em; }}
 <p><b>B2334+61 depends on the distance branch.</b> It is inside the band with the current hybrid box, which pairs the near-distance age with the far-distance luminosity. On the self-consistent near-distance branch (about 7.7 kyr) it would be 0.8–1.3 dex below: 0.8 dex with the whole-surface atmosphere fit that is valid near 1 kpc, more with the hot-spot interpretation. On the far branch its age is unknown but probably older, and it would be inside. This is the first source to discuss next.</p>
 <p>No source is above the band. Cas A is inside it, but at ages where several triplet gap models produce their pair-breaking drop (Figure 3), so it is the source most sensitive to that choice. S147, the most luminous source near 30 kyr, sits well inside the band, about 0.8 dex below the Fe hot edge.</p>
 
-<h2>6. Reference models</h2>
+<h2>6. Mass sweep with the default microphysics</h2>
+<p>This second sweep isolates the effect of mass. All microphysics stays at the solver defaults used for the original five reference curves: crust neutron gap 7, core triplet gap 12 (HGA12 deep), core proton gap 8 (HGA12 ≈ CCDK), the Gudmundsson envelope, and mesh C. Each EOS was run at ten masses evenly spaced from 1.2 to 2.0 M<sub>☉</sub>, 50 runs in total. All runs completed; the largest energy-closure error was 0.48% and the median 0.07%. The whole sweep took about 27 minutes of solver time on one core.</p>
+<figure>
+{img("fig5_mass_sweep_by_eos.png","Cooling curves for ten masses between 1.2 and 2.0 solar masses for each of the five equations of state, and the luminosity at ten thousand years against mass")}
+<figcaption><b>Figure 5.</b> Panels 1–5: cooling curves for each EOS, coloured by mass. Solid lines: no direct Urca. Dashed lines: direct Urca active. Panel 6: L<sub>γ</sub><sup>∞</sup> at 10<sup>4</sup> yr against mass for all five EOS. Default microphysics throughout.</figcaption>
+</figure>
+<div class="scroll"><table>
+<thead><tr><th>log L at 10<sup>4</sup> yr</th><th>1.20</th><th>1.29</th><th>1.38</th><th>1.47</th><th>1.56</th><th>1.64</th><th>1.73</th><th>1.82</th><th>1.91</th><th>2.00 M<sub>☉</sub></th></tr></thead>
+<tbody>
+<tr><td>BSk22</td><td class="num">32.97</td><td class="num">32.67</td><td class="num">32.23</td><td class="num">31.55</td><td class="num">31.41</td><td class="num">31.40</td><td class="num">31.40</td><td class="num">31.40</td><td class="num">31.41</td><td class="num">31.40</td></tr>
+<tr><td>BSk24</td><td class="num">33.98</td><td class="num">34.00</td><td class="num">34.01</td><td class="num">33.95</td><td class="num">33.25</td><td class="num">32.06</td><td class="num">31.98</td><td class="num">31.95</td><td class="num">31.93</td><td class="num">31.94</td></tr>
+<tr><td>BSk25</td><td class="num">34.01</td><td class="num">34.03</td><td class="num">34.04</td><td class="num">33.72</td><td class="num">33.13</td><td class="num">32.21</td><td class="num">32.02</td><td class="num">31.98</td><td class="num">31.97</td><td class="num">31.95</td></tr>
+<tr><td>BSk26</td><td class="num">32.98</td><td class="num">32.96</td><td class="num">32.96</td><td class="num">32.97</td><td class="num">32.98</td><td class="num">32.99</td><td class="num">33.00</td><td class="num">33.01</td><td class="num">33.01</td><td class="num">33.01</td></tr>
+<tr><td>APR</td><td class="num">32.90</td><td class="num">32.91</td><td class="num">32.93</td><td class="num">32.94</td><td class="num">32.96</td><td class="num">32.97</td><td class="num">32.99</td><td class="num">33.00</td><td class="num">33.01</td><td class="num">32.26</td></tr>
+</tbody></table></div>
+<p><b>BSk26 and APR: mass only moves the pair-breaking drop.</b> The default triplet gap grows with density, so heavier stars reach a larger critical temperature in their centre and enter pair-breaking cooling earlier. The drop moves from about 1.5 kyr at 1.2 M<sub>☉</sub> to before 100 yr at 2.0 M<sub>☉</sub>. After about 5 kyr all masses converge, within 0.05 dex at 10<sup>4</sup> yr. In the photon era the heavier stars cool slightly faster. The single APR run above its threshold (2.0 M<sub>☉</sub>, threshold 1.98 M<sub>☉</sub>) has direct Urca and drops to 1.8 × 10<sup>32</sup> erg/s at 10<sup>4</sup> yr.</p>
+<p><b>BSk24 and BSk25: two effects stacked.</b> These EOS reach lower central densities at a given mass. Up to about 1.4 M<sub>☉</sub> the critical temperature of the default triplet gap inside the star stays low, the drop comes late, and the star stays on a hot plateau of about 10<sup>34</sup> erg/s at 10<sup>4</sup> yr. Between about 1.3 and 1.6 M<sub>☉</sub> the drop moves steadily earlier, which produces the staircase of curves in panels 2 and 3. Above the direct Urca thresholds (1.60 and 1.63 M<sub>☉</sub>), L at 10<sup>4</sup> yr falls to about 9 × 10<sup>31</sup> erg/s and then hardly changes with mass. The proton and triplet gaps keep suppressing direct Urca in part of the region where it operates.</p>
+<p><b>BSk22: direct Urca everywhere in the grid.</b> All ten masses are above its 1.15 M<sub>☉</sub> threshold. Near the threshold, the region where direct Urca operates is small and largely covered by the gaps, so its suppression fades gradually with mass. L at 10<sup>4</sup> yr falls from 9 × 10<sup>32</sup> erg/s at 1.2 M<sub>☉</sub> to a floor of about 2.5 × 10<sup>31</sup> erg/s from about 1.5 M<sub>☉</sub> upwards.</p>
+<p><b>What this means for the original reference curves.</b> At 1.4 M<sub>☉</sub>, BSk24 and BSk25 happen to sit on their hot plateau, while BSk26 and APR have already had their early drop. A star only 0.2 M<sub>☉</sub> heavier would reverse the order. The factor-of-ten difference between the original curves is therefore not a property of the equations of state as such. It reflects where 1.4 M<sub>☉</sub> falls relative to the density profile of the triplet gap, and for BSk24 and BSk25 how close it is to the direct Urca threshold. Comparing a source against one curve per EOS at a single mass can therefore suggest an EOS preference that the physics does not support.</p>
+<p><b>Implications for the cold sources, with the default microphysics only.</b></p>
+<ul>
+<li><b>J0007+7303</b> (below 3 × 10<sup>31</sup> erg/s at about 10<sup>4</sup> yr) is reached only by BSk22 at about 1.5 M<sub>☉</sub> or more. With these gaps, direct Urca in BSk24 and BSk25 levels off at about 9 × 10<sup>31</sup> erg/s, still too warm. In the gap sweep of sections 2–3, direct Urca without gaps went much lower, so this conclusion depends on the default gap choice.</li>
+<li><b>The B2334+61 near-distance branch</b> ((1.2–8.2) × 10<sup>31</sup> erg/s at about 8 kyr) can be matched by direct Urca in BSk22, BSk24 or BSk25.</li>
+</ul>
+
+<h2>7. Reference models</h2>
 <div class="scroll"><table>
 <thead><tr><th>Reference</th><th>Definition</th><th>How closely it follows the band edge</th></tr></thead>
 <tbody>
@@ -139,11 +165,12 @@ code {{ font-size:.88em; }}
 </tbody></table></div>
 <p>The two references differ essentially in one choice: whether the core neutrons pair into a triplet state with a gap large enough to trigger pair-breaking emission at the relevant ages. Neither was tuned to the observed sources.</p>
 
-<h2>7. Limitations</h2>
+<h2>8. Limitations</h2>
 <ul>
 <li>Only three proton gap options were sampled. The triplet gap was tested broadly (11 models), but at one mass and with one proton gap.</li>
 <li>The magnetic field is zero. Only fully iron and fully accreted envelopes were run, with no partially accreted cases.</li>
 <li>The solver’s documented approximations remain: the pair-breaking response, the APR crust composition, and the BSk25 and BSk26 table rows omitted by the reader. Spatial convergence was not re-tested; only mesh C was used.</li>
+<li>The mass sweep uses one set of gaps and one envelope. Its quantitative statements, such as the levels after direct Urca switches on, hold for the default microphysics only.</li>
 <li>Comparisons below 10<sup>30</sup> erg/s, after about 1 Myr, are not possible with these runs.</li>
 <li>The source boxes are the catalogue’s current working values. Their own open issues (hot-spot versus whole-surface components, distance branches) are discussed in the catalogue audit and affect the verdicts above.</li>
 </ul>
@@ -151,15 +178,16 @@ code {{ font-size:.88em; }}
 <h2>Contents of this folder</h2>
 <ul>
 <li><code>report.html</code>: this report, with the figures embedded.</li>
-<li><code>figures/</code>: the four figures as separate PNG files.</li>
+<li><code>figures/</code>: the five figures as separate PNG files.</li>
 <li><code>tables/run_table.csv</code>: one row per run, giving its settings, direct-Urca flag, log L at eight ages and final age.</li>
 <li><code>tables/cooling_sweep_curves.csv</code>: all 67 cooling curves, in the same format as <code>cooling_five_eos.csv</code> in the catalogue.</li>
 <li><code>tables/bands.csv</code>: the upper and lower edges of the three bands on a common age grid.</li>
 <li><code>tables/run_qc.csv</code>: runtime and energy-closure error per run.</li>
 <li><code>tables/source_verdicts.txt</code>: the source comparison.</li>
 <li><code>tables/plan.csv</code>: the run plan.</li>
-<li><code>runs_inputs/</code>: the 67 solver input files.</li>
-<li><code>scripts/</code>: plan, runner, analysis and plotting scripts. These expect the solver repository next to the sweep folder.</li>
+<li><code>tables/mass_sweep_table.csv</code>, <code>tables/mass_sweep_curves.csv</code>, <code>tables/mass_sweep_qc.csv</code>: the 50-run mass sweep, giving log L at eight ages per run, the full curves, and runtime and energy closure.</li>
+<li><code>runs_inputs/gap_sweep/</code> (67 files) and <code>runs_inputs/mass_sweep/</code> (50 files): the solver input files.</li>
+<li><code>scripts/</code>: plan, runner, analysis and plotting scripts for both sweeps (the mass sweep uses <code>run_mass.py</code> and <code>plot_mass.py</code>). These expect the solver repository next to the sweep folder.</li>
 </ul>
 </main>
 </body>
