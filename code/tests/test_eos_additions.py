@@ -8,6 +8,7 @@ from eos_table import CompOSETable
 from tov import central_pressure_for_mass, integrate_star
 
 
+@pytest.mark.benchmark
 @pytest.mark.parametrize("name", ["BSk24", "BSk25", "APR"])
 def test_radius_matches_provider_at_14(root, name):
     """Reference: provider eos.mr, radius at 1.4 Msun; tolerance 0.3%."""

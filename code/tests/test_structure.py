@@ -1,4 +1,7 @@
-"""Tests of the structure area (decision D-028). Run them with `make test-structure` when this part of the code changes, or on request.
+"""Tests of the structure area (decision D-028).
+
+Run from the repository root when this area changes, or on request:
+`python -m pytest -c code/pytest.ini code/tests/test_structure.py -q`
 
 Code covered: eos_table.py, tov.py, stellar_structure.py, mesh.py, background.py, input_model.py.
 Every test states a hypothesis, a reference and a criterion, in the style of the validation steps of the GitHub code.
@@ -61,17 +64,16 @@ def limits(eos_table, bsk22_star):
 
 @pytest.fixture(scope="module")
 def faces(bsk22_star, limits):
-    return {n: place_faces(bsk22_star, limits[0], limits[1], mesh_spec(n)) for n in "ABCD"}
+    return place_faces(bsk22_star, limits[0], limits[1], mesh_spec("A"))
 
 
-@pytest.mark.parametrize("name", ["A"])
-def test_the_interface_is_an_exact_face(faces, limits, name):
+def test_the_interface_is_an_exact_face(faces, limits):
     """Hypothesis: the crust-core interface is a face of the mesh, so that no cell mixes crust and
         core.
     Reference: the definition of the mesh.
     Criterion: one face equals the interface value exactly (mesh A).
     """
-    assert np.any(faces[name] == limits[1])
+    assert np.any(faces == limits[1])
 
 
 PC_BSK26_14 = 1.2541308424984512e35  # dyn/cm^2: 1.4 Msun in BSk26 (input_bsk26)
@@ -199,6 +201,7 @@ def test_convergence_with_the_integration_tolerance(eos_table, bsk22_star):
     assert bsk22_star.surface_gravity_cm_s2 == pytest.approx(fine.surface_gravity_cm_s2, rel=2e-6)
 
 
+@pytest.mark.benchmark
 def test_mass_radius_curve_matches_the_published_one(eos_table):
     """Hypothesis: the mass-radius curve of BSk22 reproduces the curve of the authors (the one
         structure test against a reference, decision D-022).
@@ -285,7 +288,8 @@ def test_the_cooling_of_a_star_with_direct_urca_needs_the_edge_to_be_resolved(
 ):
     """Hypothesis: on the unresolved mesh A the late luminosity of a star with direct Urca is off by
         about 16 %, while mesh C (core cells below 300 m) agrees with the finest mesh D. Slow (17
-        s): run it with `make test-slow`.
+        s): from the repository root, run
+        `python -m pytest -c code/pytest.ini code/tests -q -m slow`.
     Reference: the finest mesh D.
     Criterion: |L_C / L_D - 1| < 1 % and |L_A / L_D - 1| > 5 % at 100 and 300 yr.
     """

@@ -1,4 +1,7 @@
-"""Tests of the heat capacity and conduction area (decision D-028). Run them with `make test-heat-conduction` when this part of the code changes, or on request.
+"""Tests of the heat capacity and conduction area (decision D-028).
+
+Run from the repository root when this area changes, or on request:
+`python -m pytest -c code/pytest.ini code/tests/test_heat_conduction.py -q`
 
 Code covered: heat_capacity.py, conductivity_core.py, conductivity_crust.py, effective_mass.py, superfluid.py.
 Every test states a hypothesis, a reference and a criterion, in the style of the validation steps of the GitHub code.
@@ -57,12 +60,12 @@ def to_cgs(c_natural_mev3):
     return c_natural_mev3 / HBARC_MEV_FM**3 * 1e39 * K_B
 
 
-@pytest.mark.parametrize("kf_fm, mass", [(1.1, ELECTRON_MASS_MEV)])
-def test_the_lepton_formula_matches_a_numerical_fermi_dirac_gas(kf_fm, mass):
+def test_the_lepton_formula_matches_a_numerical_fermi_dirac_gas():
     """Hypothesis: the lepton heat capacity is that of a degenerate relativistic gas.
     Reference: a numerical Fermi-Dirac integral at k_B T = 1e-3 E_F.
     Criterion: relative 1e-4 (electron, k_F = 1.1 fm^-1).
     """
+    kf_fm, mass = 1.1, ELECTRON_MASS_MEV
     k_f = kf_fm * HBARC_MEV_FM  # MeV
     T_mev = 1e-3 * np.sqrt(k_f**2 + mass**2)  # k_B T = 1e-3 E_F: deeply degenerate
     numeric = numerical_heat_capacity(lambda k: np.sqrt(k * k + mass**2), k_f, T_mev)
@@ -71,12 +74,12 @@ def test_the_lepton_formula_matches_a_numerical_fermi_dirac_gas(kf_fm, mass):
     assert formula == pytest.approx(to_cgs(numeric), rel=1e-4)
 
 
-@pytest.mark.parametrize("kf_fm, ratio, mass_g", [(2.12, 0.51, M_NEUTRON)])
-def test_the_nucleon_formula_matches_a_numerical_gas_of_landau_quasiparticles(kf_fm, ratio, mass_g):
+def test_the_nucleon_formula_matches_a_numerical_gas_of_landau_quasiparticles():
     """Hypothesis: the nucleon heat capacity is that of Landau quasiparticles with the Landau mass.
     Reference: a numerical integral for a gas with e = k^2 / 2m* at k_B T = 1e-3 E_F.
     Criterion: relative 1e-4 (neutron, k_F = 2.12 fm^-1, m*/m = 0.51).
     """
+    kf_fm, ratio, mass_g = 2.12, 0.51, M_NEUTRON
     mass_mev = ratio * mass_g * 2.99792458e10**2 / MEV_TO_ERG  # m* c^2 [MeV]
     k_f = kf_fm * HBARC_MEV_FM
     T_mev = 1e-3 * k_f**2 / (2.0 * mass_mev)  # k_B T = 1e-3 times the Fermi energy

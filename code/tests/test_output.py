@@ -1,4 +1,7 @@
-"""Tests of the output area (decision D-028). Run them with `make test-output` when this part of the code changes, or on request.
+"""Tests of the output area (decision D-028).
+
+Run from the repository root when this area changes, or on request:
+`python -m pytest -c code/pytest.ini code/tests/test_output.py -q`
 
 Code covered: cooling_driver.py, cooling_animation.py, compare_emissivities.py, neutrino_dominance.py.
 Every test states a hypothesis, a reference and a criterion, in the style of the validation steps of the GitHub code.
@@ -8,12 +11,9 @@ import cooling_animation as ca
 import matplotlib.pyplot as plt
 import pytest
 import numpy as np
-from thermal_geometry import thermal_geometry
 import subprocess
 import sys
-from config import CoolingConfig
-from cooling import run_cooling
-from dataclasses import replace
+from cooling import CoolingRun
 
 
 # ------------------------------------------------------------------ command line
@@ -48,16 +48,37 @@ def test_driver_writes_all_outputs(root, tmp_path):
 
 
 @pytest.fixture(scope="module")
-def eos_run(bsk22_model):
-    return run_cooling(bsk22_model.background, replace(CoolingConfig(), final_years=100.0))
+def entries():
+    """Synthetic histories with different time grids, end times and cell counts.
 
+    Temperatures use the CoolingRun units (T_inf / 1e8 K). Unsorted radii
+    exercise the animation's ordering without building stars or evolving them.
+    """
+    def history(times, radius):
+        times = np.asarray(times, dtype=float)
+        radius = np.asarray(radius, dtype=float)
+        profiles = {
+            i: (8.0 + radius / 12.0) / (1.0 + t) ** 0.2
+            for i, t in enumerate(times)
+        }
+        run = CoolingRun(
+            times_years=times[1:],
+            luminosity_erg_s=1e35 / (1.0 + times[1:]) ** 0.6,
+            profiles=profiles,
+            completed_steps=len(times) - 1,
+            stop_reason="final_time",
+            step_times_years=times,
+            relative_changes=np.array([
+                np.max(np.abs(profiles[i] / profiles[i - 1] - 1.0))
+                for i in range(1, len(times))
+            ]),
+            rejected_steps=0,
+        )
+        return run, radius
 
-@pytest.fixture(scope="module")
-def entries(background, short_run, bsk22_model, eos_run):
-    """The default BSk26 star (to 1000 yr) and the BSk22 star (to 100 yr: it ends earlier)."""
     return [
-        ("table", short_run, thermal_geometry(background).radius_cells),
-        ("1.40 Msun", eos_run, thermal_geometry(bsk22_model.background).radius_cells),
+        ("table", *history([0, 0.1, 2, 30, 1000], [11.8, 7.0, 2.0])),
+        ("1.40 Msun", *history([0, 0.2, 5, 100], [12.0, 8.0, 4.0, 1.0])),
     ]
 
 

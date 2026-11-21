@@ -1,4 +1,7 @@
-"""Tests of the integration area (decision D-028). Run them with `make test-integration` when this part of the code changes, or on request.
+"""Tests of the integration area (decision D-028).
+
+Run from the repository root when this area changes, or on request:
+`python -m pytest -c code/pytest.ini code/tests/test_integration.py -q`
 
 Code covered: cooling.py, thermal_solver.py, thermal_matrix.py, thermal_geometry.py, config.py, energy_balance.py.
 Every test states a hypothesis, a reference and a criterion, in the style of the validation steps of the GitHub code.

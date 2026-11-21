@@ -1,4 +1,7 @@
-"""Tests of the emissivities area (decision D-028). Run them with `make test-emissivities` when this part of the code changes, or on request.
+"""Tests of the emissivities area (decision D-028).
+
+Run from the repository root when this area changes, or on request:
+`python -m pytest -c code/pytest.ini code/tests/test_emissivities.py -q`
 
 Code covered: emissivity.py, emissivity_factors.py, emissivity_updated.py.
 Every test states a hypothesis, a reference and a criterion, in the style of the validation steps of the GitHub code.
@@ -84,14 +87,14 @@ def test_the_elementary_functions_are_the_integrals_they_stand_for(a, b):
     assert eu.cap_psi(a, b) == pytest.approx(eu.cap_psi(b, a), rel=1e-14)
 
 
-@pytest.mark.parametrize("p_f", [300.0])
 @pytest.mark.parametrize("with_rho", [False, True])
-def test_the_identical_nucleon_J_is_the_integral_of_the_amplitude(p_f, with_rho, monkeypatch):
+def test_the_identical_nucleon_J_is_the_integral_of_the_amplitude(with_rho, monkeypatch):
     """Hypothesis: the closed form of J for identical nucleons is the integral of the amplitude (Eqs.
         3.3 and 3.6).
     Reference: a numerical double integral of the amplitude.
     Criterion: relative 1e-5, with and without the rho meson.
     """
+    p_f = 300.0
     c_rho = eu.C_RHO if with_rho else 0.0
     monkeypatch.setattr(eu, "C_RHO", c_rho)
 
@@ -111,13 +114,13 @@ def test_the_identical_nucleon_J_is_the_integral_of_the_amplitude(p_f, with_rho,
 
 
 @pytest.mark.parametrize("c_rho, landau", [(0.0, False), (0.0, True), (1.4, True)])
-@pytest.mark.parametrize("p_n", [345.0])
-def test_the_np_J_is_the_integral_of_the_amplitude(p_n, c_rho, landau, monkeypatch):
+def test_the_np_J_is_the_integral_of_the_amplitude(c_rho, landau, monkeypatch):
     """Hypothesis: the leading J^np of Eq. 3.16 is the integral of the amplitude of Eq. 3.13.
     Reference: a numerical integral over the exchanged momentum.
     Criterion: relative 1e-9: without rho and Landau parameters, with Landau parameters only, and
         with both.
     """
+    p_n = 345.0
     monkeypatch.setattr(eu, "C_RHO", c_rho)
     if not landau:
         monkeypatch.setattr(eu, "F0_PRIME", 0.0)
@@ -316,14 +319,14 @@ KP = (1.3**3 + 0.8**3) ** (
 )  # proton Fermi momentum [fm^-1] for k_e = 1.3 and k_mu = 0.8 (charge neutrality)
 
 
-@pytest.mark.parametrize("mass", [MUON_MASS_MEV])
-def test_the_lepton_mass_enters_the_matrix_element_only_through_the_energy(mass):
+def test_the_lepton_mass_enters_the_matrix_element_only_through_the_energy():
     """Hypothesis: the lepton mass enters the squared matrix element of the direct Urca only through
         the lepton energy.
     Reference: sum|M|^2 = 8 G^2 [(1 + 3 g_A^2) E eps + (1 - g_A^2) p.k], derived analytically,
         against an explicit spinor calculation.
     Criterion: relative 1e-12 for the muon mass and four random kinematics.
     """
+    mass = MUON_MASS_MEV
     rng = np.random.default_rng(11)
     g_a = 1.27
     for _ in range(4):

@@ -1,4 +1,7 @@
-"""Tests of the envelope and boundary area (decision D-028). Run them with `make test-envelope` when this part of the code changes, or on request.
+"""Tests of the envelope and boundary area (decision D-028).
+
+Run from the repository root when this area changes, or on request:
+`python -m pytest -c code/pytest.ini code/tests/test_envelope.py -q`
 
 Code covered: thermal_fluxes.py, thermal_boundary.py.
 Every test states a hypothesis, a reference and a criterion, in the style of the validation steps of the GitHub code.
@@ -15,12 +18,12 @@ from thermal_matrix import evaluate_coefficients
 G14 = 1.7392597708694928
 
 
-@pytest.mark.parametrize("model", ["accreted"])
-def test_analytic_slope_matches_finite_difference(model):
+def test_analytic_slope_matches_finite_difference():
     """Hypothesis: the analytic slope of the envelope flux is its derivative with respect to T_b.
     Reference: centred finite differences.
     Criterion: relative 1e-8 for T_b between 2e7 and 2e9 K (accreted envelope).
     """
+    model = "accreted"
     for Tb in np.geomspace(2e7, 2e9, 25):
         h = 1e-5 * Tb
         up = thermal_fluxes(Tb + h, G14, model).flux_internal

@@ -64,7 +64,31 @@ python -m pip install -r code/requirements-dev.txt
 python -m pytest -c code/pytest.ini code/tests -q
 ```
 
-Slow convergence tests are skipped by default; use `-m slow` to select them or `-m ""` to include all tests. See `docs/VALIDATION.md` for checks performed on this packaged layout.
+Run these commands from the repository root. By default, pytest excludes the slow
+convergence check and the four external mass-radius benchmark cases; all remain
+available explicitly:
+
+```bash
+python -m pytest -c code/pytest.ini code/tests -q -m benchmark
+python -m pytest -c code/pytest.ini code/tests -q -m slow
+python -m pytest -c code/pytest.ini code/tests -q -m ""
+```
+
+For a change in one code area, select its test file, for example:
+
+```bash
+python -m pytest -c code/pytest.ini code/tests/test_output.py -q
+```
+
+Run the affected area's tests and its relevant quick run; if output tables change,
+also check their consumers. Checking a push or merge with no code changes requires
+only a Git tree comparison, not another test run. Run benchmarks when the EOS or
+TOV implementation or reference data change; run the slow convergence check when
+mesh or spatial-discretization changes warrant it.
+
+The animation smoke test uses synthetic histories; the driver smoke test retains
+an actual cooling run. See `docs/VALIDATION.md` for the historical checks performed
+on this packaged layout.
 
 ## Provenance
 
